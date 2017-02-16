@@ -31,6 +31,7 @@ export default class extends Phaser.State {
         this.load.image('cargo1', 'assets/images/cargo1.png');
         this.load.spritesheet('landing_zone', 'assets/sprites/landing_zone.png', 48, 8);
         this.load.spritesheet('fire1', 'assets/sprites/fire1.png', 24, 24);
+        this.load.spritesheet('chain', 'assets/sprites/chain.png', 16, 26);
     }
 
     /**
@@ -172,6 +173,16 @@ export default class extends Phaser.State {
         }, 8000);
 
         this.add.existing(ship);
+
+        // Rope
+
+        let rope = new Rope({
+            length: 40,
+            xAnchor: 400,
+            yAnchor: 64
+        });
+
+        this.add.existing(rope)
 
         // Ship contact events
         ship.body.onBeginContact.add(function () {
